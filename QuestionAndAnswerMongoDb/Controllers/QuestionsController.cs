@@ -25,6 +25,18 @@ namespace QuestionAndAnswerMongoDb.Controllers
             return User.FindFirstValue("ID")!;
         }
 
+        [HttpGet("GetQuestion")]
+        [Authorize]
+        public IActionResult GetQuestion(string QuestionID)
+        {
+            var Result = _questions.GetQuestionById(new ObjectId(QuestionID));
+            if (Result != null)
+            {
+                return Ok(Result);
+            }
+            return BadRequest("This Question Not Exist Maybe Deleted");
+        }
+
         [HttpPost("AddQuestion")]
         [Authorize]
         public IActionResult AddQuestion(QuestionDTO question)
