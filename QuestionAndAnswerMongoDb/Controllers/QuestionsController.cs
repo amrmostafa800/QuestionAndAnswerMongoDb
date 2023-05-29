@@ -97,7 +97,7 @@ namespace QuestionAndAnswerMongoDb.Controllers
         [Authorize]
         public IActionResult DeleteAnswer(string QuestionId, string AnswerId)
         {
-            var Result = _questions.CheckUseridOfAnswerIsSameThisUserID(ObjectId.Parse(QuestionId), ObjectId.Parse(AnswerId), _GetUserId());
+            var Result = _questions.CheckUseridOfAnswerIsSameThisUserID(ObjectId.Parse(QuestionId), ObjectId.Parse(AnswerId), _GetUserId()); //Need Improve To Use Filter With Update like DeleteComment
             if (Result)
             {
                 try
