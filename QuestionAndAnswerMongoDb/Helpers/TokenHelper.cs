@@ -5,7 +5,7 @@ namespace QuestionAndAnswerMongoDb.Helpers
 {
     public class TokenHelper
     {
-        public static string GenerateRandomToken(int length)
+        public static string GenerateRandomToken(int length) // code by chatgpt
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
             byte[] randomBytes = new byte[length];
