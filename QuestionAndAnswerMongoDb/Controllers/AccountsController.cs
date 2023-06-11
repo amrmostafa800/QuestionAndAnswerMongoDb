@@ -16,7 +16,7 @@ namespace QuestionAndAnswerMongoDb.Controllers
     {
         AccountsService _accountsService;
         private IConfiguration _configuration;
-        JwtHelper _JWT;
+        readonly JwtHelper _JWT;
 
         public AccountsController(AccountsService accountsService, IConfiguration configuration)
         {
