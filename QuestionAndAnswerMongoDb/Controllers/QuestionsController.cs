@@ -13,7 +13,7 @@ namespace QuestionAndAnswerMongoDb.Controllers
     [ApiController]
     public class QuestionsController : ControllerBase
     {
-        QuestionsService _questions;
+        readonly QuestionsService _questions;
 
         public QuestionsController(QuestionsService questionsService)
         {

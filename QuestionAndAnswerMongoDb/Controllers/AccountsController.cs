@@ -14,8 +14,8 @@ namespace QuestionAndAnswerMongoDb.Controllers
     [ApiController]
     public class AccountsController : ControllerBase
     {
-        AccountsService _accountsService;
-        private IConfiguration _configuration;
+        readonly AccountsService _accountsService;
+        readonly private IConfiguration _configuration;
         readonly JwtHelper _JWT;
 
         public AccountsController(AccountsService accountsService, IConfiguration configuration)
