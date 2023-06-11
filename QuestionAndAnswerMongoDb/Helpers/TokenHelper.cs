@@ -1,20 +1,27 @@
-﻿namespace QuestionAndAnswerMongoDb.Helpers
+﻿using System.Security.Cryptography;
+using System.Text;
+
+namespace QuestionAndAnswerMongoDb.Helpers
 {
     public class TokenHelper
     {
-        public static string GenerateRandomToken(int Length)
+        public static string GenerateRandomToken(int length)
         {
-            Random random = new Random();
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            byte[] randomBytes = new byte[length];
 
-            const string Chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            char[] Token = new char[Length];
-
-            for (int i = 0; i < Length; i++)
+            using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
             {
-                Token[i] = Chars[random.Next(Chars.Length)];
+                rng.GetBytes(randomBytes);
             }
 
-            return new string(Token);
+            StringBuilder tokenBuilder = new StringBuilder(length);
+            foreach (byte b in randomBytes)
+            {
+                tokenBuilder.Append(chars[b % chars.Length]);
+            }
+
+            return tokenBuilder.ToString();
         }
     }
 }
